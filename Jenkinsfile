@@ -50,5 +50,20 @@ pipeline {
                 sh 'helm lint ./helm/php-3tier-cicd'
             }
         }
+
+        stage('Helm Deploy') {
+            steps {
+                withCredentials([file(credentialsId: 'jenkins-kubeconfig', variable: 'KUBECONFIG')]) {
+                    sh '''
+                        echo "Deploying application to Kubernetes..."
+                        helm upgrade --install php-3tier-cicd ./helm/php-3tier-cicd \
+                          --namespace capstone \
+                          --create-namespace \
+                          --kubeconfig="$KUBECONFIG" \
+                          --set image.tag=${IMAGE_TAG}
+                    '''
+                }
+            }
+        }
     }
 }
