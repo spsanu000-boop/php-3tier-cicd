@@ -43,10 +43,12 @@ pipeline {
                 }
             }
         }
-     stage('Helm Lint') {
+
+        stage('Helm Lint') {
             steps {
                 echo "Validating Helm chart..."
                 sh 'helm lint ./helm/php-3tier-cicd'
             }
         }
-
+    }
+}
