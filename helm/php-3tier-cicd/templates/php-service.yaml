@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: php-3tier-cicd
+  labels:
+    app: php-3tier-cicd
+spec:
+  type: {{ .Values.service.type }}
+  selector:
+    app: php-3tier-cicd
+  ports:
+    - protocol: TCP
+      port: {{ .Values.service.port }}
+      targetPort: {{ .Values.service.targetPort }}
+      nodePort: {{ .Values.service.nodePort }}

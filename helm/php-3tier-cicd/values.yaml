@@ -1,0 +1,13 @@
+# Number of PHP application pods.
+replicaCount: 1
+
+image:
+  repository: 970722350756.dkr.ecr.us-east-1.amazonaws.com/php-3tier-cicd
+  tag: "1"
+  pullPolicy: IfNotPresent
+
+service:
+  type: NodePort
+  port: 80
+  targetPort: 80
+  nodePort: 30080

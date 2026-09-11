@@ -1,0 +1,6 @@
+apiVersion: v2
+name: php-3tier-cicd
+description: Helm chart for the PHP 3-Tier CI/CD application
+type: application
+version: 0.1.0
+appVersion: "1.0.0"
