@@ -31,5 +31,17 @@ pipeline {
                 '''
             }
         }
+
+        stage('Kubernetes Connection Test') {
+            steps {
+                withCredentials([file(credentialsId: 'jenkins-kubeconfig', variable: 'KUBECONFIG')]) {
+                    sh '''
+                        echo "Testing Kubernetes connection..."
+                        kubectl --kubeconfig="$KUBECONFIG" get pods -n capstone
+                        kubectl --kubeconfig="$KUBECONFIG" auth can-i create deployments -n capstone
+                    '''
+                }
+            }
+        }
     }
 }
