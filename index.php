@@ -8,6 +8,7 @@ $dbPassword = getenv('DB_PASSWORD') ?: 'MySQLUserPass123!';
 $conn = new mysqli($dbHost, $dbUser, $dbPassword, $dbName);
 
 echo "<h1>PHP 3-Tier CI/CD Application</h1>";
+echo "<h2>CI/CD Version: Build 15</h2>";
 echo "<p>Application deployed through Jenkins, Docker, ECR and Kubernetes.</p>";
 
 if ($conn->connect_error) {
