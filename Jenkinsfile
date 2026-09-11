@@ -60,6 +60,8 @@ pipeline {
                           --namespace capstone \
                           --kubeconfig="$KUBECONFIG" \
                           --set image.tag=${IMAGE_TAG}
+			  --wait \
+			  --timeout 5m
                     '''
                 }
             }
