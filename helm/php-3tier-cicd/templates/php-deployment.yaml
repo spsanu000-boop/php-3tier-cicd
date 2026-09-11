@@ -14,6 +14,8 @@ spec:
       labels:
         app: php-3tier-cicd
     spec:
+      imagePullSecrets:
+        - name: ecr-registry-secret
       containers:
         - name: php
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
